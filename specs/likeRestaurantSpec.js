@@ -18,7 +18,7 @@ describe('Menyukai sebuah restorant', () => {
         id: 1,
       },
     });
-    expect(document.querySelector('[aria-label="like this movie"]'))
+    expect(document.querySelector('[aria-label="like this restaurant"]'))
       .toBeTruthy();
   });
   // tes ke 2
@@ -29,7 +29,7 @@ describe('Menyukai sebuah restorant', () => {
         id: 1,
       },
     });
-    expect(document.querySelector('[aria-label="unlike this movie"]'))
+    expect(document.querySelector('[aria-label="unlike this restaurant"]'))
       .toBeFalsy();
   });
   // tes ke 3
