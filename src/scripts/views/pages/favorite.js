@@ -7,21 +7,34 @@ const Favorite = {
       <div class="content">
         <h2 class="content__heading">Your Liked restaurants</h2>
         <div id="restaurants" class="restaurants">
- 
         </div>
+        <div id="empty-content"></div>
       </div>
+      
     `;
   },
 
   async afterRender() {
-    // eslint-disable-next-line no-undef
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
-    const restaurantsContainer = document.querySelector('#restaurants');
+    const container = document.querySelector('#restaurants');
+    const empty = document.getElementById('empty-content');
 
-    restaurants.forEach((restaurant) => {
-      // eslint-disable-next-line no-undef
-      restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-    });
+    if (restaurants.length < 1) {
+      empty.innerHTML += `
+      <div id"message">
+        <h2 tabindex="0" class="restaurant-item-not-found">Restaurant Like Not Found</h2>
+        <p> try to like some restaurant</p>
+      </div>
+      `;
+
+      container.innerHTML = '';
+    } else if (restaurants.length >= 1) {
+      const restaurantsContainer = document.querySelector('#restaurants');
+      restaurants.forEach((restaurant) => {
+        restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+      });
+      empty.innerHTML = '';
+    }
   },
 };
 

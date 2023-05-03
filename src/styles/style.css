@@ -330,3 +330,7 @@
     text-decoration: none;
     padding: 14px;
   }
+
+  #empty-content{
+    text-align: center ;
+  }
