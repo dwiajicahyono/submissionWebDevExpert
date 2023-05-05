@@ -4,7 +4,7 @@ import { createRestaurantItemTemplate } from '../templates/template-creator';
 const ListRestaurant = {
   async render() {
     return `
-    <div class="hero">
+    <div class="hero lazyload">
     <div class="hero__inner">
       <h1 class="hero__title">Mari Cari Restaurant Yang Kami Rekomendasikan</h1>
       <p class="hero__tagline">Mencari Restaurant dengan Makanan Enak semudah Membalikan Telapak Tangan</p>
@@ -23,7 +23,7 @@ const ListRestaurant = {
 
   async afterRender() {
     const restaurants = await RestaurantSource.listRestaurant();
-    console.log(restaurants);
+    // console.log(restaurants);
     const restaurantsContainer = document.querySelector('#restaurants');
     restaurants.forEach((restaurant) => {
       restaurantsContainer.innerHTML
